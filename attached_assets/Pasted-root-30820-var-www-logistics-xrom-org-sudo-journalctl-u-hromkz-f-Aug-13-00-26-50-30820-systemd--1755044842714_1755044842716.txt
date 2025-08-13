@@ -1,0 +1,22 @@
+root@30820:/var/www/logistics.xrom.org# sudo journalctl -u hromkz -f
+Aug 13 00:26:50 30820 systemd[1]: Started hromkz.service - Hrom KZ Full Logistics System.
+Aug 13 00:26:50 30820 gunicorn[43440]: [2025-08-13 00:26:50 +0000] [43440] [INFO] Starting gunicorn 23.0.0
+Aug 13 00:26:50 30820 gunicorn[43440]: [2025-08-13 00:26:50 +0000] [43440] [ERROR] connection to /var/www/logistics.xrom.org/hromkz.sock failed: [Errno 13] Permission denied
+Aug 13 00:26:51 30820 gunicorn[43440]: [2025-08-13 00:26:51 +0000] [43440] [ERROR] connection to /var/www/logistics.xrom.org/hromkz.sock failed: [Errno 13] Permission denied
+Aug 13 00:26:52 30820 gunicorn[43440]: [2025-08-13 00:26:52 +0000] [43440] [ERROR] connection to /var/www/logistics.xrom.org/hromkz.sock failed: [Errno 13] Permission denied
+Aug 13 00:26:53 30820 gunicorn[43440]: [2025-08-13 00:26:53 +0000] [43440] [ERROR] connection to /var/www/logistics.xrom.org/hromkz.sock failed: [Errno 13] Permission denied
+Aug 13 00:26:54 30820 gunicorn[43440]: [2025-08-13 00:26:54 +0000] [43440] [ERROR] connection to /var/www/logistics.xrom.org/hromkz.sock failed: [Errno 13] Permission denied
+Aug 13 00:26:55 30820 gunicorn[43440]: [2025-08-13 00:26:55 +0000] [43440] [ERROR] Can't connect to /var/www/logistics.xrom.org/hromkz.sock
+Aug 13 00:26:55 30820 systemd[1]: hromkz.service: Main process exited, code=exited, status=1/FAILURE
+Aug 13 00:26:55 30820 systemd[1]: hromkz.service: Failed with result 'exit-code'.
+Aug 13 00:27:05 30820 systemd[1]: hromkz.service: Scheduled restart job, restart counter is at 56.
+Aug 13 00:27:05 30820 systemd[1]: Started hromkz.service - Hrom KZ Full Logistics System.
+Aug 13 00:27:06 30820 gunicorn[43524]: [2025-08-13 00:27:06 +0000] [43524] [INFO] Starting gunicorn 23.0.0
+Aug 13 00:27:06 30820 gunicorn[43524]: [2025-08-13 00:27:06 +0000] [43524] [ERROR] connection to /var/www/logistics.xrom.org/hromkz.sock failed: [Errno 13] Permission denied
+Aug 13 00:27:07 30820 gunicorn[43524]: [2025-08-13 00:27:07 +0000] [43524] [ERROR] connection to /var/www/logistics.xrom.org/hromkz.sock failed: [Errno 13] Permission denied
+Aug 13 00:27:08 30820 gunicorn[43524]: [2025-08-13 00:27:08 +0000] [43524] [ERROR] connection to /var/www/logistics.xrom.org/hromkz.sock failed: [Errno 13] Permission denied
+Aug 13 00:27:09 30820 gunicorn[43524]: [2025-08-13 00:27:09 +0000] [43524] [ERROR] connection to /var/www/logistics.xrom.org/hromkz.sock failed: [Errno 13] Permission denied
+Aug 13 00:27:10 30820 gunicorn[43524]: [2025-08-13 00:27:10 +0000] [43524] [ERROR] connection to /var/www/logistics.xrom.org/hromkz.sock failed: [Errno 13] Permission denied
+Aug 13 00:27:11 30820 gunicorn[43524]: [2025-08-13 00:27:11 +0000] [43524] [ERROR] Can't connect to /var/www/logistics.xrom.org/hromkz.sock
+Aug 13 00:27:11 30820 systemd[1]: hromkz.service: Main process exited, code=exited, status=1/FAILURE
+Aug 13 00:27:11 30820 systemd[1]: hromkz.service: Failed with result 'exit-code'.

@@ -1,0 +1,167 @@
+root@30820:/var/www/logistics.xrom.org# sudo bash fix_python_environment.sh
+🐍 Автоматическое исправление Python окружения
+==============================================
+[INFO] Остановка сервиса...
+[INFO] Переустановка Python пакетов...
+Requirement already satisfied: pip in ./venv/lib/python3.12/site-packages (25.2)
+Requirement already satisfied: flask in ./venv/lib/python3.12/site-packages (3.1.1)
+Requirement already satisfied: flask-sqlalchemy in ./venv/lib/python3.12/site-packages (3.1.1)
+Requirement already satisfied: flask-wtf in ./venv/lib/python3.12/site-packages (1.2.2)
+Requirement already satisfied: wtforms in ./venv/lib/python3.12/site-packages (3.2.1)
+Requirement already satisfied: werkzeug in ./venv/lib/python3.12/site-packages (3.1.3)
+Requirement already satisfied: email-validator in ./venv/lib/python3.12/site-packages (2.2.0)
+Requirement already satisfied: psycopg2-binary in ./venv/lib/python3.12/site-packages (2.9.10)
+Requirement already satisfied: gunicorn in ./venv/lib/python3.12/site-packages (23.0.0)
+Requirement already satisfied: requests in ./venv/lib/python3.12/site-packages (2.32.4)
+Requirement already satisfied: sqlalchemy in ./venv/lib/python3.12/site-packages (2.0.43)
+Requirement already satisfied: blinker>=1.9.0 in ./venv/lib/python3.12/site-packages (from flask) (1.9.0)
+Requirement already satisfied: click>=8.1.3 in ./venv/lib/python3.12/site-packages (from flask) (8.2.1)
+Requirement already satisfied: itsdangerous>=2.2.0 in ./venv/lib/python3.12/site-packages (from flask) (2.2.0)
+Requirement already satisfied: jinja2>=3.1.2 in ./venv/lib/python3.12/site-packages (from flask) (3.1.6)
+Requirement already satisfied: markupsafe>=2.1.1 in ./venv/lib/python3.12/site-packages (from flask) (3.0.2)
+Requirement already satisfied: dnspython>=2.0.0 in ./venv/lib/python3.12/site-packages (from email-validator) (2.7.0)
+Requirement already satisfied: idna>=2.0.0 in ./venv/lib/python3.12/site-packages (from email-validator) (3.10)
+Requirement already satisfied: packaging in ./venv/lib/python3.12/site-packages (from gunicorn) (25.0)
+Requirement already satisfied: charset_normalizer<4,>=2 in ./venv/lib/python3.12/site-packages (from requests) (3.4.3)
+Requirement already satisfied: urllib3<3,>=1.21.1 in ./venv/lib/python3.12/site-packages (from requests) (2.5.0)
+Requirement already satisfied: certifi>=2017.4.17 in ./venv/lib/python3.12/site-packages (from requests) (2025.8.3)
+Requirement already satisfied: greenlet>=1 in ./venv/lib/python3.12/site-packages (from sqlalchemy) (3.2.4)
+Requirement already satisfied: typing-extensions>=4.6.0 in ./venv/lib/python3.12/site-packages (from sqlalchemy) (4.14.1)
+[INFO] Проверка синтаксиса Python файлов...
+[INFO] Проверка импорта Flask приложения...
+Traceback (most recent call last):
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3301, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 447, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 711, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    with util.safe_reraise():
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 388, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 673, in __init__
+    self.__connect()
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 899, in __connect
+    with util.safe_reraise():
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 895, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/engine/create.py", line 661, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 629, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "localhost" (::1), port 5432 failed: FATAL:  could not open file "global/pg_filenode.map": Permission denied
+connection to server at "localhost" (::1), port 5432 failed: FATAL:  could not open file "global/pg_filenode.map": Permission denied
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/var/www/logistics.xrom.org/app.py", line 29, in <module>
+    db.create_all()
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/flask_sqlalchemy/extension.py", line 900, in create_all
+    self._call_for_binds(bind_key, "create_all")
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/flask_sqlalchemy/extension.py", line 881, in _call_for_binds
+    getattr(metadata, op_name)(bind=engine)
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/sql/schema.py", line 5924, in create_all
+    bind._run_ddl_visitor(
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3251, in _run_ddl_visitor
+    with self.begin() as conn:
+  File "/usr/lib/python3.12/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3241, in begin
+    with self.connect() as conn:
+         ^^^^^^^^^^^^^^
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3277, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2440, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3301, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 447, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 711, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    with util.safe_reraise():
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 388, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 673, in __init__
+    self.__connect()
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 899, in __connect
+    with util.safe_reraise():
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 895, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/engine/create.py", line 661, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 629, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/logistics.xrom.org/venv/lib/python3.12/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: FATAL:  could not open file "global/pg_filenode.map": Permission denied
+connection to server at "localhost" (::1), port 5432 failed: FATAL:  could not open file "global/pg_filenode.map": Permission denied
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[ERROR] Ошибка импорта Flask приложения
+[INFO] Создание минимального app.py для тестирования...
+[INFO] Тестирование минимального приложения...
+Minimal Flask OK
+[OK] Минимальное приложение работает
+[INFO] Обновление systemd для тестирования...
+Created symlink /etc/systemd/system/multi-user.target.wants/hromkz-test.service → /etc/systemd/system/hromkz-test.service.
+[OK] Тестовое приложение запущено успешно
+[INFO] Проблема в основном коде приложения
+Removed "/etc/systemd/system/multi-user.target.wants/hromkz-test.service".
+[INFO] Проверка базы данных...
+[ERROR] Проблемы с базой данных
+[INFO] Пересоздание базы данных...
+psql: error: connection to server on socket "/var/run/postgresql/.s.PGSQL.5432" failed: FATAL:  could not open file "global/pg_filenode.map": Permission denied

@@ -1,0 +1,64 @@
+root@30820:/var/www/logistics.xrom.org# sudo systemctl status hromkz
+○ hromkz.service - Hrom KZ Full Logistics System
+     Loaded: loaded (/etc/systemd/system/hromkz.service; enabled; preset: enabled)
+     Active: inactive (dead) (Result: exit-code) since Wed 2025-08-13 00:28:29 UTC; 41min ago
+   Duration: 5.141s
+    Process: 43565 ExecStart=/var/www/logistics.xrom.org/venv/bin/gunicorn --workers 3 --bind unix:/var/www/logistics.x>
+   Main PID: 43565 (code=exited, status=1/FAILURE)
+        CPU: 139ms
+
+Aug 13 00:28:29 30820 systemd[1]: Stopped hromkz.service - Hrom KZ Full Logistics System.
+
+root@30820:/var/www/logistics.xrom.org# sudo journalctl -u hromkz --no-pager -n 10
+Aug 13 00:28:22 30820 gunicorn[43565]: [2025-08-13 00:28:22 +0000] [43565] [INFO] Starting gunicorn 23.0.0
+Aug 13 00:28:22 30820 gunicorn[43565]: [2025-08-13 00:28:22 +0000] [43565] [ERROR] connection to /var/www/logistics.xrom.org/hromkz.sock failed: [Errno 13] Permission denied
+Aug 13 00:28:23 30820 gunicorn[43565]: [2025-08-13 00:28:23 +0000] [43565] [ERROR] connection to /var/www/logistics.xrom.org/hromkz.sock failed: [Errno 13] Permission denied
+Aug 13 00:28:24 30820 gunicorn[43565]: [2025-08-13 00:28:24 +0000] [43565] [ERROR] connection to /var/www/logistics.xrom.org/hromkz.sock failed: [Errno 13] Permission denied
+Aug 13 00:28:25 30820 gunicorn[43565]: [2025-08-13 00:28:25 +0000] [43565] [ERROR] connection to /var/www/logistics.xrom.org/hromkz.sock failed: [Errno 13] Permission denied
+Aug 13 00:28:26 30820 gunicorn[43565]: [2025-08-13 00:28:26 +0000] [43565] [ERROR] connection to /var/www/logistics.xrom.org/hromkz.sock failed: [Errno 13] Permission denied
+Aug 13 00:28:27 30820 gunicorn[43565]: [2025-08-13 00:28:27 +0000] [43565] [ERROR] Can't connect to /var/www/logistics.xrom.org/hromkz.sock
+Aug 13 00:28:27 30820 systemd[1]: hromkz.service: Main process exited, code=exited, status=1/FAILURE
+Aug 13 00:28:27 30820 systemd[1]: hromkz.service: Failed with result 'exit-code'.
+Aug 13 00:28:29 30820 systemd[1]: Stopped hromkz.service - Hrom KZ Full Logistics System.
+root@30820:/var/www/logistics.xrom.org# sudo systemctl stop hromkz
+root@30820:/var/www/logistics.xrom.org# sudo bash auto_fix_vps.sh
+🔧 Автоматическое исправление VPS logistics.xrom.org
+==================================================
+[INFO] Остановка сервиса hromkz...
+[INFO] Создание правильной структуры директорий...
+[INFO] Обновление systemd конфигурации...
+[INFO] Обновление Nginx конфигурации...
+[INFO] Перезагрузка systemd...
+[INFO] Включение автозапуска сервиса...
+[INFO] Запуск сервиса hromkz...
+[INFO] Проверка конфигурации Nginx...
+2025/08/13 01:15:58 [warn] 45911#45911: could not build optimal proxy_headers_hash, you should increase either proxy_headers_hash_max_size: 512 or proxy_headers_hash_bucket_size: 64; ignoring proxy_headers_hash_bucket_size
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+[INFO] Перезагрузка Nginx...
+[INFO] Ожидание запуска сервисов...
+[OK] Проверка результата:
+
+[ERROR] Сервис hromkz: ошибка
+Логи сервиса:
+Aug 13 01:15:59 30820 gunicorn[45910]: [2025-08-13 01:15:59 +0000] [45910] [ERROR] Shutting down: Master
+Aug 13 01:15:59 30820 gunicorn[45910]: [2025-08-13 01:15:59 +0000] [45910] [ERROR] Reason: Worker failed to boot.
+Aug 13 01:15:59 30820 systemd[1]: hromkz.service: Main process exited, code=exited, status=3/NOTIMPLEMENTED
+Aug 13 01:15:59 30820 systemd[1]: hromkz.service: Failed with result 'exit-code'.
+Aug 13 01:15:59 30820 systemd[1]: hromkz.service: Consumed 1.785s CPU time.
+[INFO] Проверка HTTP ответа...
+[ERROR] HTTP ответ: 502 Bad Gateway - Сервис не запущен
+Проверьте логи: journalctl -u hromkz -f
+[ERROR] Socket файл не создан
+Проверьте права доступа:
+total 8
+drwxrwxr-x 2 hromkz www-data 4096 Aug 13 01:15 .
+drwxrwxr-x 7 hromkz www-data 4096 Aug 13 01:15 ..
+
+[INFO] Полезные команды для диагностики:
+  journalctl -u hromkz -f       # Логи Flask приложения
+  systemctl status hromkz       # Статус сервиса
+  curl -I http://logistics.xrom.org  # Проверка HTTP ответа
+
+[ERROR] ❌ Необходима дополнительная диагностика
+[INFO] Выполните: journalctl -u hromkz --no-pager -n 10

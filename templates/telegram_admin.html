@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}Настройка Telegram{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">
+                        <i class="fab fa-telegram-plane me-2"></i>
+                        Настройка уведомлений Telegram
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Информация:</strong> Здесь вы можете протестировать подключение к Telegram боту и отправку уведомлений.
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body text-center">
+                                    <div class="mb-3">
+                                        <i class="fas fa-plug text-primary" style="font-size: 2rem;"></i>
+                                    </div>
+                                    <h5 class="card-title">Проверить подключение</h5>
+                                    <p class="card-text text-muted">
+                                        Тест соединения с Telegram ботом
+                                    </p>
+                                    <form method="POST" class="d-inline">
+                                        <input type="hidden" name="action" value="test_connection">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="fas fa-check-circle me-2"></i>Проверить
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body text-center">
+                                    <div class="mb-3">
+                                        <i class="fas fa-paper-plane text-success" style="font-size: 2rem;"></i>
+                                    </div>
+                                    <h5 class="card-title">Тестовое уведомление</h5>
+                                    <p class="card-text text-muted">
+                                        Отправить тестовую заявку в Telegram
+                                    </p>
+                                    <form method="POST" class="d-inline">
+                                        <input type="hidden" name="action" value="test_notification">
+                                        <button type="submit" class="btn btn-success">
+                                            <i class="fas fa-bell me-2"></i>Отправить тест
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h5>Настройка бота</h5>
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            <strong>Для настройки Telegram бота:</strong>
+                            <ol class="mb-0 mt-2">
+                                <li>Создайте бота через <a href="https://t.me/BotFather" target="_blank">@BotFather</a></li>
+                                <li>Получите токен бота (например: 123456789:ABCdefGHIjklMNOpqrstUVwxyz)</li>
+                                <li>Добавьте бота в группу или канал</li>
+                                <li>Получите Chat ID группы или канала</li>
+                                <li>Добавьте эти данные в переменные окружения:
+                                    <ul>
+                                        <li><code>TELEGRAM_BOT_TOKEN</code></li>
+                                        <li><code>TELEGRAM_CHAT_ID</code></li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-3">
+                        <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left me-2"></i>Назад к панели
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

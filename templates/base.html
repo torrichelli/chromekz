@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Хром КЗ - Система логистики{% endblock %}</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light modern-nav">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Хром КЗ" class="logo-img me-3">
+                <span class="brand-text">Хром КЗ</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('index') }}">
+                            <i class="fas fa-home me-1"></i>Главная
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('track_order') }}">
+                            <i class="fas fa-search me-1"></i>Отследить заказ
+                        </a>
+                    </li>
+                </ul>
+                
+                <ul class="navbar-nav">
+                    {% if session.employee_id %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('dashboard') }}">
+                                <i class="fas fa-tachometer-alt me-1"></i>Панель управления
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="navbar-text me-3">
+                                <i class="fas fa-user me-1"></i>{{ session.employee_username }}
+                            </span>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('logout') }}">
+                                <i class="fas fa-sign-out-alt me-1"></i>Выйти
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('login') }}">
+                                <i class="fas fa-sign-in-alt me-1"></i>Вход
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('register') }}">
+                                <i class="fas fa-user-plus me-1"></i>Регистрация
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="container mt-3">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ 'danger' if category == 'error' else category }} alert-dismissible fade show" role="alert">
+                        <i class="fas fa-{{ 'exclamation-triangle' if category == 'error' else 'info-circle' if category == 'info' else 'check-circle' if category == 'success' else 'exclamation-triangle' }} me-2"></i>
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Main content -->
+    <main class="container mt-4">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="modern-footer mt-5 py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Хром КЗ" class="footer-logo me-3">
+                        <span class="footer-brand">Хром КЗ</span>
+                    </div>
+                    <p class="text-muted">Профессиональные логистические решения для вашего бизнеса</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h6 class="text-primary mb-3">Контакты</h6>
+                    <div class="contact-info">
+                        <p class="mb-2">
+                            <i class="fas fa-phone text-primary me-2"></i>
+                            <a href="tel:+77172555555" class="footer-contact-link">+7 (717) 255-55-55</a>
+                        </p>
+                        <p class="mb-2">
+                            <i class="fas fa-envelope text-primary me-2"></i>
+                            <a href="mailto:info@hromkz.kz" class="footer-contact-link">info@hromkz.kz</a>
+                        </p>
+                        <p class="mb-0">
+                            <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                            Астана, Казахстан
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h6 class="text-primary mb-3">Наши услуги</h6>
+                    <p class="mb-2"><i class="fas fa-truck text-primary me-2"></i>Экспресс доставка</p>
+                    <p class="mb-2"><i class="fas fa-shield-alt text-primary me-2"></i>Страхование грузов</p>
+                    <p class="mb-0"><i class="fas fa-headset text-primary me-2"></i>24/7 поддержка</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 text-muted">&copy; 2025 Хром КЗ. Надежная доставка по Казахстану.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="social-links">
+                        <a href="https://t.me/hromkz" class="social-link me-3" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="https://wa.me/77172555555" class="social-link me-3" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://instagram.com/hromkz" class="social-link" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Phone mask script -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Функция маски телефона +7(7__)___-__-__
+        function formatPhoneNumber(value) {
+            // Удаляем все символы кроме цифр
+            let digits = value.replace(/\D/g, '');
+            
+            // Если начинается с 8, заменяем на 7
+            if (digits.startsWith('8')) {
+                digits = '7' + digits.substring(1);
+            }
+            
+            // Если не начинается с 7, добавляем 7 в начало
+            if (!digits.startsWith('7')) {
+                digits = '7' + digits;
+            }
+            
+            // Ограничиваем до 11 цифр (7 + 10 цифр казахского номера)
+            digits = digits.substring(0, 11);
+            
+            // Форматируем номер +7(7__)___-__-__
+            let formatted = '+7(';
+            
+            if (digits.length > 1) {
+                // Добавляем вторую 7
+                formatted += '7';
+                
+                if (digits.length > 2) {
+                    // Добавляем 2 цифры после 77
+                    formatted += digits.substring(2, 4) + ')';
+                    
+                    if (digits.length > 4) {
+                        // Добавляем следующие 3 цифры
+                        formatted += digits.substring(4, 7);
+                        
+                        if (digits.length > 7) {
+                            // Добавляем тире и 2 цифры
+                            formatted += '-' + digits.substring(7, 9);
+                            
+                            if (digits.length > 9) {
+                                // Добавляем тире и последние 2 цифры
+                                formatted += '-' + digits.substring(9, 11);
+                            }
+                        }
+                    }
+                }
+            } else {
+                formatted += '7';
+            }
+            
+            return formatted;
+        }
+        
+        // Применяем маску ко всем полям с классом phone-mask
+        const phoneInputs = document.querySelectorAll('.phone-mask');
+        
+        phoneInputs.forEach(input => {
+            // Устанавливаем начальное значение
+            if (!input.value) {
+                input.value = '+7(7';
+            }
+            
+            input.addEventListener('input', function(e) {
+                const cursorPos = e.target.selectionStart;
+                const formatted = formatPhoneNumber(e.target.value);
+                e.target.value = formatted;
+                
+                // Восстанавливаем позицию курсора
+                setTimeout(() => {
+                    e.target.setSelectionRange(cursorPos, cursorPos);
+                }, 0);
+            });
+            
+            input.addEventListener('focus', function(e) {
+                if (!e.target.value || e.target.value === '' || e.target.value === '+7(7') {
+                    e.target.value = '+7(7';
+                    // Устанавливаем курсор после "+7(7"
+                    setTimeout(() => {
+                        e.target.setSelectionRange(4, 4);
+                    }, 0);
+                }
+            });
+            
+            input.addEventListener('keydown', function(e) {
+                // Предотвращаем удаление "+7(7"
+                if (e.target.selectionStart <= 4 && (e.key === 'Backspace' || e.key === 'Delete')) {
+                    e.preventDefault();
+                    // Если пытаемся удалить всё, оставляем базовую маску
+                    if (e.target.value.length <= 4) {
+                        e.target.value = '+7(7';
+                        e.target.setSelectionRange(4, 4);
+                    }
+                }
+            });
+        });
+    });
+    </script>
+    
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

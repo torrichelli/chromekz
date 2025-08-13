@@ -1,0 +1,1312 @@
+/* Modern CSS for Hrom KZ Logistics System */
+
+/* Official Apple design system - 2025 */
+:root {
+    /* Apple system colors - matched to apple.com */
+    --apple-blue: #0071e3;
+    --apple-blue-light: #06c;
+    --apple-gray: #1d1d1f;
+    --apple-gray-light: #424245;
+    --apple-gray-medium: #86868b;
+    --apple-gray-lighter: #d2d2d7;
+    --apple-black: #000000;
+    --apple-white: #ffffff;
+    
+    /* Apple semantic colors */
+    --apple-green: #30d158;
+    --apple-orange: #ff9500;
+    --apple-red: #ff453a;
+    --apple-purple: #bf5af2;
+    --apple-indigo: #5856d6;
+    
+    /* Apple background system */
+    --bg-primary: #fbfbfd;
+    --bg-secondary: #f5f5f7;
+    --bg-tertiary: #f2f2f2;
+    --bg-elevated: #ffffff;
+    
+    /* Apple text hierarchy */
+    --text-primary: #1d1d1f;
+    --text-secondary: #424245;
+    --text-tertiary: #86868b;
+    --text-quaternary: #d2d2d7;
+    
+    /* Apple glass effects */
+    --bg-glass: rgba(255, 255, 255, 0.72);
+    --bg-glass-dark: rgba(142, 142, 147, 0.1);
+    --border-glass: rgba(255, 255, 255, 0.2);
+    
+    /* Apple gradients */
+    --gradient-hero: linear-gradient(135deg, #1d1d1f 0%, #424245 100%);
+    --gradient-accent: linear-gradient(135deg, #0071e3 0%, #5856d6 100%);
+    
+    /* Apple spacing and dimensions */
+    --section-padding: 4rem 0;
+    --card-padding: 2rem;
+    --border-radius-sm: 8px;
+    --border-radius: 12px;
+    --border-radius-lg: 20px;
+    --border-radius-xl: 28px;
+    
+    /* Apple shadows */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.08);
+    --shadow-xl: 0 25px 60px rgba(0, 0, 0, 0.12);
+    
+    /* Apple-style transitions */
+    --transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
+    /* Additional variables for compatibility */
+    --bg-white: #ffffff;
+    --border-color: #d2d2d7;
+    --border-light: #f0f0f0;
+    --text-dark: #1d1d1f;
+    --text-medium: #86868b;
+    --bg-lighter: #f8f9fa;
+    --primary-color: #0071e3;
+    --secondary-color: #ff9500;
+}
+
+/* Official Apple typography system */
+body {
+    font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.47059;
+    color: var(--apple-gray);
+    background: var(--bg-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+}
+
+/* Apple navigation design */
+.modern-nav {
+    background: var(--bg-glass);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-brand .logo-img {
+    height: 40px;
+    width: auto;
+    transition: var(--transition);
+}
+
+.navbar-brand:hover .logo-img {
+    transform: scale(1.05);
+}
+
+.brand-text {
+    font-weight: 600;
+    font-size: 21px;
+    color: var(--apple-gray);
+    margin-left: 0.5rem;
+    letter-spacing: -0.022em;
+}
+
+/* Apple hero section */
+.hero-section {
+    background: var(--gradient-hero);
+    position: relative;
+    padding: 80px 0 60px;
+    border-bottom: none;
+    overflow: hidden;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><defs><pattern id="dots" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse"><circle cx="30" cy="30" r="1.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="60" height="60" fill="url(%23dots)"/></svg>');
+    opacity: 0.4;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-logo-img {
+    height: 80px;
+    width: auto;
+    margin-bottom: 32px;
+    display: block;
+}
+
+.hero-title {
+    font-size: 56px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 24px;
+    letter-spacing: -0.005em;
+    line-height: 1.07143;
+    text-align: center;
+}
+
+.hero-subtitle {
+    font-size: 28px;
+    color: rgba(255,255,255,0.9);
+    font-weight: 400;
+    max-width: 640px;
+    margin: 0 auto 32px;
+    line-height: 1.14286;
+    letter-spacing: 0.007em;
+    text-align: center;
+}
+
+/* Clean Stats */
+.quick-stats {
+    margin: 3rem 0;
+}
+
+.stat-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: var(--transition);
+    height: 100%;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+    border-color: var(--primary-color);
+}
+
+.stat-icon {
+    font-size: 1.75rem;
+    color: white !important;
+    margin-bottom: 1.25rem;
+    width: 48px;
+    height: 48px;
+    background: var(--apple-blue);
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+}
+
+.stat-icon i {
+    color: white !important;
+}
+
+.stat-number {
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--apple-gray);
+    margin-bottom: 8px;
+    letter-spacing: -0.022em;
+}
+
+.stat-label {
+    font-size: 17px;
+    color: var(--apple-gray-light);
+    font-weight: 400;
+}
+
+/* Premium action section */
+.action-section {
+    background: var(--bg-secondary);
+    position: relative;
+    padding: var(--section-padding);
+}
+
+.section-title {
+    font-size: 48px;
+    font-weight: 600;
+    color: var(--apple-gray);
+    margin-bottom: 16px;
+    letter-spacing: -0.003em;
+    line-height: 1.08333;
+}
+
+.section-subtitle {
+    font-size: 21px;
+    color: var(--apple-gray-light);
+    max-width: 640px;
+    margin: 0 auto;
+    line-height: 1.381;
+    letter-spacing: 0.011em;
+}
+
+/* Apple action cards */
+.action-card {
+    background: var(--bg-elevated);
+    border: 0.5px solid rgba(0, 0, 0, 0.04);
+    border-radius: var(--border-radius-lg);
+    padding: 40px 32px;
+    height: 100%;
+    cursor: pointer;
+    transition: var(--transition-bounce);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04), 0 0 1px rgba(0, 0, 0, 0.04);
+    position: relative;
+}
+
+.action-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08), 0 0 1px rgba(0, 0, 0, 0.04);
+    border-color: var(--apple-blue);
+    /* Белый фон остается при наведении */
+    background: var(--bg-elevated);
+}
+
+.action-card-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--border-radius);
+    background: var(--apple-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    transition: var(--transition);
+}
+
+.action-card-icon.regions {
+    background: var(--apple-orange);
+}
+
+.action-card-icon.tracking {
+    background: var(--apple-green);
+}
+
+.action-card-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.action-card-title {
+    font-size: 21px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--apple-gray);
+    text-align: center;
+    line-height: 1.19048;
+    letter-spacing: 0.011em;
+    transition: var(--transition);
+}
+
+/* При наведении заголовок остается темным */
+.action-card:hover .action-card-title {
+    color: var(--apple-gray);
+}
+
+.action-card-text {
+    color: var(--apple-gray-light);
+    margin-bottom: 24px;
+    line-height: 1.47059;
+    text-align: center;
+    font-size: 17px;
+    transition: var(--transition);
+}
+
+/* При наведении текст остается читаемым */
+.action-card:hover .action-card-text {
+    color: var(--apple-gray-light);
+}
+
+.action-card-features {
+    margin-bottom: 2rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    color: var(--apple-gray-light);
+    font-size: 17px;
+}
+
+.feature-item i {
+    color: var(--apple-green);
+    margin-right: 12px;
+    font-size: 16px;
+}
+
+.action-card-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: var(--bg-secondary);
+    border-radius: var(--border-radius-sm);
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+/* При наведении кнопка становится синей */
+.action-card:hover .action-card-button {
+    background: var(--apple-blue);
+}
+
+.btn-text {
+    font-weight: 400;
+    color: var(--apple-blue);
+    transition: var(--transition);
+    font-size: 17px;
+}
+
+/* При наведении текст кнопки белый на синем фоне */
+.action-card:hover .btn-text {
+    color: white;
+}
+
+.action-card-button i {
+    color: var(--apple-blue);
+    transition: var(--transition);
+    margin-left: 8px;
+}
+
+/* При наведении иконка белая на синем фоне */
+.action-card:hover .action-card-button i {
+    color: white;
+}
+
+/* macOS Vibrancy Effect - полное воссоздание эффекта стекла */
+.modern-form {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Главный эффект размытия - как в macOS */
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    /* Fallback для старых браузеров без backdrop-filter */
+    background-color: rgba(255, 255, 255, 0.4);
+    /* Полупрозрачная заливка поверх размытия - светлая тема */
+    background: rgba(255, 255, 255, 0.15);
+    z-index: 1050;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 1rem;
+    animation: vibrancyFadeIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    overflow-y: auto;
+}
+
+/* Проверка поддержки backdrop-filter */
+@supports (backdrop-filter: blur(18px)) {
+    .modern-form {
+        background: rgba(255, 255, 255, 0.15);
+    }
+}
+
+/* Для браузеров без поддержки backdrop-filter */
+@supports not (backdrop-filter: blur(18px)) {
+    .modern-form {
+        background: rgba(255, 255, 255, 0.85);
+    }
+}
+
+/* Темная тема для vibrancy эффекта */
+.modern-form.dark-theme {
+    background: rgba(20, 20, 20, 0.25);
+}
+
+@supports (backdrop-filter: blur(18px)) {
+    .modern-form.dark-theme {
+        background: rgba(20, 20, 20, 0.25);
+    }
+}
+
+@supports not (backdrop-filter: blur(18px)) {
+    .modern-form.dark-theme {
+        background: rgba(20, 20, 20, 0.9);
+    }
+}
+
+/* Анимация появления с эффектом vibrancy */
+@keyframes vibrancyFadeIn {
+    from {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+        -webkit-backdrop-filter: blur(0px);
+        transform: scale(0.98) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        transform: scale(1) translateY(0);
+    }
+}
+
+.modern-card {
+    /* Контентный блок - НЕ имеет backdrop-filter */
+    /* Почти непрозрачный фон для читаемости текста */
+    background: rgba(245, 245, 247, 0.9);
+    /* Скругленные углы как в macOS */
+    border-radius: 16px;
+    /* Едва заметная светлая граница для объема */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Мягкая рассеянная тень - окно "парит" */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 90vw;
+    width: 100%;
+    max-height: 95vh;
+    height: 95vh;
+    overflow-y: auto;
+    /* Достаточные отступы, чтобы контент не прилипал к краям */
+    padding: 0;
+    /* Дополнительная тень для объема в macOS стиле */
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.2),
+        0 2px 8px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Темная тема для контентного блока */
+.modern-form.dark-theme .modern-card {
+    background: rgba(40, 40, 40, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.modern-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    border-bottom: 0.5px solid rgba(60, 60, 67, 0.12);
+    /* Легкая полупрозрачность для заголовка */
+    background: rgba(255, 255, 255, 0.05);
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+
+.modern-form.dark-theme .modern-card-header {
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.form-header-content {
+    display: flex;
+    align-items: center;
+}
+
+.form-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--border-radius-sm);
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+}
+
+.form-icon.regions {
+    background: var(--secondary-color);
+}
+
+.form-icon i {
+    font-size: 1.25rem;
+    color: white;
+}
+
+.form-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--text-dark);
+}
+
+.form-subtitle {
+    font-size: 0.875rem;
+    color: var(--text-medium);
+    margin: 0;
+}
+
+.modern-btn-close {
+    background: rgba(120, 120, 128, 0.16);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 0.5px solid rgba(255, 255, 255, 0.16);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(60, 60, 67, 0.6);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.modern-btn-close:hover {
+    background: rgba(255, 69, 58, 0.8);
+    border-color: rgba(255, 69, 58, 0.8);
+    color: white;
+    transform: scale(1.05);
+}
+
+/* Apple-style Form Controls */
+.form-control, .form-select {
+    border-radius: var(--border-radius);
+    border: 1.5px solid var(--apple-gray-lighter) !important;
+    padding: 0.875rem 1.125rem;
+    font-size: 1rem;
+    transition: var(--transition);
+    background: var(--bg-white);
+    color: var(--apple-gray);
+    font-weight: 400;
+}
+
+/* Ensure all input fields have visible borders */
+input.form-control,
+textarea.form-control,
+select.form-control,
+.form-select {
+    border: 1.5px solid var(--apple-gray-lighter) !important;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--apple-blue) !important;
+    box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.15);
+    outline: none;
+    background: var(--bg-white);
+}
+
+.form-label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+}
+
+.modern-card-body {
+    padding: 2rem;
+    /* Полностью прозрачный фон для тела карточки */
+    background: transparent;
+}
+
+/* Цвета текста для светлой и темной темы */
+.modern-form .form-label,
+.modern-form .form-title,
+.modern-form h3,
+.modern-form h5 {
+    color: rgba(60, 60, 67, 0.9);
+}
+
+.modern-form.dark-theme .form-label,
+.modern-form.dark-theme .form-title,
+.modern-form.dark-theme h3,
+.modern-form.dark-theme h5 {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.modern-form-content {
+    max-width: 100%;
+}
+
+.form-section {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 0.5px solid rgba(60, 60, 67, 0.12);
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: var(--border-radius-sm);
+    padding: 1.5rem;
+}
+
+/* Apple contact links */
+.contact-links {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 48px 0;
+}
+
+.contact-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 28px;
+    background: var(--bg-glass);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border: 0.5px solid var(--border-glass);
+    border-radius: var(--border-radius-xl);
+    color: white;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 17px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+}
+
+.contact-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.contact-link:hover::before {
+    left: 100%;
+}
+
+.contact-link:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.contact-link i {
+    margin-right: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.contact-link .contact-text {
+    font-size: 0.95rem;
+}
+
+/* Remove duplicate - using the original stat-card definition above */
+
+/* Modern Action Cards */
+.action-card {
+    background: var(--bg-white);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Удален дублированный код - используем только Apple стили выше */
+
+/* Apple footer design */
+.modern-footer {
+    background: var(--bg-secondary);
+    border-top: 0.5px solid rgba(0, 0, 0, 0.04);
+    margin-top: 64px;
+}
+
+/* Fix footer text visibility - white text on current background */
+.modern-footer .text-muted {
+    color: white !important;
+}
+
+.modern-footer p {
+    color: white !important;
+}
+
+.modern-footer h6 {
+    color: white !important;
+}
+
+.modern-footer .footer-brand {
+    color: white !important;
+}
+
+.modern-footer .footer-contact-link {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.modern-footer .footer-contact-link:hover {
+    color: white !important;
+}
+
+.footer-logo {
+    height: 35px;
+    width: auto;
+}
+
+.footer-brand {
+    font-weight: 600;
+    font-size: 21px;
+    color: var(--apple-gray);
+    letter-spacing: 0.011em;
+}
+
+.footer-contact-link {
+    color: var(--apple-gray-light);
+    text-decoration: none;
+    transition: var(--transition);
+    font-size: 17px;
+}
+
+.footer-contact-link:hover {
+    color: var(--apple-blue);
+    text-decoration: underline;
+}
+
+.social-links {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    background: var(--apple-gray-medium);
+    color: white;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: var(--transition);
+    font-size: 18px;
+}
+
+.social-link:hover {
+    background: var(--apple-blue);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 113, 227, 0.3);
+}
+
+/* Apple-style Dashboard */
+.dashboard-stats .card {
+    border: 0.5px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow);
+    transition: var(--transition-bounce);
+    overflow: hidden;
+    position: relative;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.dashboard-stats .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--bg-gradient);
+}
+
+.dashboard-stats .card:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: var(--shadow-xl);
+}
+
+.dashboard-stats .card-body {
+    padding: 2rem;
+    color: white;
+    text-align: center;
+}
+
+.dashboard-stats .card.bg-primary {
+    background: var(--apple-blue) !important;
+}
+
+.dashboard-stats .card.bg-warning {
+    background: var(--apple-orange) !important;
+}
+
+.dashboard-stats .card.bg-info {
+    background: var(--apple-indigo) !important;
+}
+
+.dashboard-stats .card.bg-success {
+    background: var(--apple-green) !important;
+}
+
+/* Apple table design */
+.table {
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04), 0 0 1px rgba(0, 0, 0, 0.04);
+    background: var(--bg-elevated);
+    border: 0.5px solid rgba(0, 0, 0, 0.04);
+}
+
+.table th {
+    background: var(--bg-secondary);
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.04);
+    font-weight: 600;
+    color: var(--apple-gray);
+    font-size: 17px;
+    letter-spacing: 0.011em;
+    padding: 16px 20px;
+}
+
+.table td {
+    vertical-align: middle;
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.04);
+    padding: 16px 20px;
+    font-size: 17px;
+    color: var(--apple-gray-light);
+}
+
+.table tbody tr:hover {
+    background: var(--bg-secondary);
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.status-pending {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status-processing {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.status-delivered {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.form-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.form-section-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.form-section-title i {
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+}
+
+.modern-input {
+    transition: var(--transition);
+}
+
+.modern-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.input-group-text {
+    background: var(--bg-lighter);
+    border-color: var(--border-color);
+    color: var(--text-medium);
+    font-weight: 500;
+}
+
+.form-actions {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-light);
+}
+
+/* Clean Buttons */
+.btn {
+    border-radius: var(--border-radius-sm);
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    transition: var(--transition);
+    border: 1px solid transparent;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary-light);
+    border-color: var(--primary-light);
+    color: white;
+}
+
+.btn-secondary {
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: var(--text-medium);
+    border-color: var(--text-medium);
+    color: white;
+}
+
+.btn-outline-secondary {
+    background: transparent;
+    border-color: var(--border-color);
+    color: var(--text-medium);
+}
+
+.btn-outline-secondary:hover {
+    background: var(--text-medium);
+    border-color: var(--text-medium);
+    color: white;
+}
+
+/* Clean Footer */
+.modern-footer {
+    background: var(--text-dark);
+    color: rgba(255, 255, 255, 0.8);
+    position: relative;
+}
+
+.footer-logo {
+    height: 32px;
+    width: auto;
+}
+
+.footer-brand {
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: white;
+}
+
+.contact-info p {
+    transition: var(--transition);
+    margin-bottom: 0.5rem;
+}
+
+.contact-info p:hover {
+    color: white;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--border-radius-sm);
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.social-link:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Dashboard Improvements */
+.card {
+    border-radius: var(--border-radius);
+    border: 1px solid var(--bs-border-color);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.table {
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+}
+
+.badge {
+    font-size: 0.75em;
+    padding: 0.5em 0.75em;
+    border-radius: var(--border-radius-sm);
+    font-weight: 500;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.form-container {
+    animation: fadeIn 0.3s ease;
+}
+
+/* Loading States */
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.fa-spinner {
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-logo-img {
+        height: 80px;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .action-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .modern-form {
+        padding: 1rem;
+    }
+    
+    .modern-card-header {
+        padding: 1.5rem 1.5rem 1rem;
+    }
+    
+    .form-header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .form-icon {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .hero-section,
+    .modern-nav,
+    .modern-footer,
+    .btn,
+    .action-section {
+        display: none !important;
+    }
+    
+    .modern-card {
+        box-shadow: none;
+        border: 1px solid #000;
+    }
+}
+
+/* Accessibility */
+.btn:focus,
+.form-control:focus,
+.action-card:focus {
+    outline: 2px solid var(--bs-primary);
+    outline-offset: 2px;
+}
+
+/* Clean Information Section */
+.modern-info-section {
+    background: var(--bg-white);
+    position: relative;
+    padding: var(--section-padding);
+}
+
+.info-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    text-align: center;
+    height: 100%;
+    transition: var(--transition);
+}
+
+.info-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+    border-color: var(--primary-color);
+}
+
+.info-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--border-radius-sm);
+    background: var(--apple-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    transition: var(--transition);
+}
+
+.info-icon i {
+    font-size: 1.25rem;
+    color: white !important;
+}
+
+.info-card:hover .info-icon {
+    background: var(--apple-blue);
+    transform: scale(1.1);
+}
+
+.info-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--text-dark);
+}
+
+.info-text {
+    color: var(--text-medium);
+    line-height: 1.6;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Clean Contact Cards */
+.modern-contact-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    height: 100%;
+    transition: var(--transition);
+}
+
+.modern-contact-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+    border-color: var(--primary-color);
+}
+
+.contact-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.contact-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--border-radius-sm);
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+}
+
+.contact-icon i {
+    font-size: 1rem;
+    color: white;
+}
+
+.contact-header h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--text-dark);
+}
+
+.contact-header p {
+    font-size: 0.875rem;
+    color: var(--text-medium);
+    margin: 0;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    background: var(--bg-lighter);
+    border-radius: var(--border-radius-sm);
+    transition: var(--transition);
+}
+
+.contact-item:hover {
+    background: var(--border-light);
+}
+
+.contact-item i {
+    color: var(--primary-color);
+    margin-right: 0.75rem;
+    font-size: 0.875rem;
+    width: 16px;
+    text-align: center;
+}
+
+.contact-item span {
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
